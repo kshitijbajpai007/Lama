@@ -11,8 +11,8 @@ const About = () => {
         className="w-full md:w-1/2 aspect-[3/4] relative overflow-hidden"
       >
         <img 
-          src="https://images.unsplash.com/photo-1554046920-90dc5f3ac6ed?auto=format&fit=crop&w=800&q=80" 
-          alt="Portrait of Photographer" 
+          src="/LamaAboutPhoto.jpeg" 
+          alt="Portrait of Lama" 
           className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
         />
       </motion.div>

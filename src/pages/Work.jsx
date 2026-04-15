@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Eye, Film, Image as ImageIcon, Music2, Briefcase, Coffee, Layers } from 'lucide-react';
+import MediaCard from '../components/MediaCard';
 
 const CATEGORIES = [
   {
@@ -137,23 +138,7 @@ const Work = () => {
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                         {cat.items.map((item, j) => (
-                          <div 
-                            key={j} 
-                            className="bg-neutral-800 relative overflow-hidden group cursor-pointer border border-white/5 hover:border-white/20 transition-colors"
-                            style={{ height: item.h }}
-                          >
-                            <div className="w-full h-full bg-neutral-900 flex items-center justify-center relative">
-                              <span className="text-neutral-700">
-                                {item.type === "video" ? <Film size={24} /> : <ImageIcon size={24} />}
-                              </span>
-                              <div className="absolute bottom-2 left-2 font-mono text-[9px] tracking-wider text-neutral-400 bg-black/60 px-2 py-0.5 uppercase z-10">
-                                {item.type === "video" ? "▶ " : ""}{item.label}
-                              </div>
-                              <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 text-white">
-                                <Eye size={20} />
-                              </div>
-                            </div>
-                          </div>
+                          <MediaCard key={j} item={item} />
                         ))}
                       </div>
 

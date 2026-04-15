@@ -23,24 +23,22 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass py-4' : 'bg-transparent py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass py-4' : 'bg-transparent py-6'
+        }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         <Link to="/" className="text-xl font-bold tracking-tighter">
-          KSHITIJ<span className="text-neutral-500">.</span>
+          LAMA <span className="text-neutral-500"></span>
         </Link>
         <nav className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.path}
-              className={`text-sm tracking-wide transition-colors ${
-                location.pathname === link.path
-                  ? 'text-white font-medium'
-                  : 'text-neutral-400 hover:text-white'
-              }`}
+              className={`text-sm tracking-wide transition-colors ${location.pathname === link.path
+                ? 'text-white font-medium'
+                : 'text-neutral-400 hover:text-white'
+                }`}
             >
               {link.name}
             </Link>
