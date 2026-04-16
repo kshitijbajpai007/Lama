@@ -17,14 +17,14 @@ const FloatingCTA = () => {
             className="flex flex-col space-y-3"
           >
             <a
-              href="mailto:hello@example.com"
+              href="mailto: princegmrllama@gmail.com"
               className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 text-white shadow-lg hover:bg-neutral-700 transition-colors"
               aria-label="Email"
             >
               <Mail size={20} />
             </a>
             <a
-              href="https://wa.me/1234567890"
+              href="https://wa.me/+917303781109"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-12 h-12 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-500 transition-colors"
@@ -35,7 +35,7 @@ const FloatingCTA = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       <button
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

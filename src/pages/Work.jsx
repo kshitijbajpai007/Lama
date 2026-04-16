@@ -10,10 +10,14 @@ const CATEGORIES = [
     desc: "Concert films, artist portraits & live event coverage that capture raw energy.",
     count: "24 Projects",
     items: [
-      { type: "video", h: 180, label: "Music Video" }, { type: "photo", h: 160, label: "Live Shot" },
-      { type: "photo", h: 200, label: "Artist Portrait" }, { type: "video", h: 180, label: "Concert Film" },
-      { type: "photo", h: 160, label: "Backstage" }, { type: "video", h: 200, label: "Lyric Video" },
-      { type: "photo", h: 160, label: "Press Kit" }, { type: "photo", h: 180, label: "Tour Doc" },
+      { type: "video", h: 180, label: "Music Video", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
+      { type: "photo", h: 160, label: "Live Shot", src: "https://images.unsplash.com/photo-1540039155732-d68a2bf62c01?auto=format&fit=crop&w=600&q=80" },
+      { type: "photo", h: 200, label: "Artist Portrait", src: "https://images.unsplash.com/photo-1493225457224-eda0e6fdca03?auto=format&fit=crop&w=600&q=80" }, 
+      { type: "video", h: 180, label: "Concert Film", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" },
+      { type: "photo", h: 160, label: "Backstage", src: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" }, 
+      { type: "video", h: 200, label: "Lyric Video", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" },
+      { type: "photo", h: 160, label: "Press Kit", src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" }, 
+      { type: "photo", h: 180, label: "Tour Doc", src: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80" },
     ]
   },
   {
@@ -22,9 +26,12 @@ const CATEGORIES = [
     desc: "Commercial campaigns & branded storytelling for global names.",
     count: "18 Projects",
     items: [
-      { type: "video", h: 180, label: "TVC Spot" }, { type: "photo", h: 200, label: "Product Still" },
-      { type: "video", h: 160, label: "Social Film" }, { type: "photo", h: 180, label: "Lookbook" },
-      { type: "photo", h: 200, label: "Campaign" }, { type: "video", h: 160, label: "Launch Film" },
+      { type: "video", h: 180, label: "TVC Spot", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" }, 
+      { type: "photo", h: 200, label: "Product Still", src: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" },
+      { type: "video", h: 160, label: "Social Film", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
+      { type: "photo", h: 180, label: "Lookbook", src: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" },
+      { type: "photo", h: 200, label: "Campaign", src: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" }, 
+      { type: "video", h: 160, label: "Launch Film", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" },
     ]
   },
   {
@@ -33,9 +40,12 @@ const CATEGORIES = [
     desc: "Culinary photography & food films that make flavours visual.",
     count: "15 Projects",
     items: [
-      { type: "photo", h: 200, label: "Hero Shot" }, { type: "photo", h: 160, label: "Detail" },
-      { type: "video", h: 180, label: "Recipe Film" }, { type: "photo", h: 200, label: "Menu Shoot" },
-      { type: "photo", h: 160, label: "Plating" }, { type: "video", h: 180, label: "Chef Profile" },
+      { type: "photo", h: 200, label: "Hero Shot", src: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=600&q=80" }, 
+      { type: "photo", h: 160, label: "Detail", src: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=600&q=80" },
+      { type: "video", h: 180, label: "Recipe Film", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
+      { type: "photo", h: 200, label: "Menu Shoot", src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" },
+      { type: "photo", h: 160, label: "Plating", src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" }, 
+      { type: "video", h: 180, label: "Chef Profile", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" },
     ]
   },
   {
@@ -44,10 +54,14 @@ const CATEGORIES = [
     desc: "Personal projects, documentary work & experimental visuals.",
     count: "32 Projects",
     items: [
-      { type: "video", h: 180, label: "Short Film" }, { type: "photo", h: 200, label: "Street" },
-      { type: "photo", h: 160, label: "Travel Doc" }, { type: "video", h: 180, label: "Docu" },
-      { type: "photo", h: 200, label: "Landscape" }, { type: "photo", h: 160, label: "Experimental" },
-      { type: "video", h: 180, label: "Personal" }, { type: "photo", h: 200, label: "Aerial" },
+      { type: "video", h: 180, label: "Short Film", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
+      { type: "photo", h: 200, label: "Street", src: "https://images.unsplash.com/photo-1510488057273-0498b671a5cb?auto=format&fit=crop&w=600&q=80" },
+      { type: "photo", h: 160, label: "Travel Doc", src: "https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=600&q=80" }, 
+      { type: "video", h: 180, label: "Docu", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" },
+      { type: "photo", h: 200, label: "Landscape", src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80" }, 
+      { type: "photo", h: 160, label: "Experimental", src: "https://images.unsplash.com/photo-1506744626753-143bc3fe95bb?auto=format&fit=crop&w=600&q=80" },
+      { type: "video", h: 180, label: "Personal", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
+      { type: "photo", h: 200, label: "Aerial", src: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=600&q=80" },
     ]
   },
 ];
