@@ -6,12 +6,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0a0a0a",
-        foreground: "#fafafa",
-        primary: "#171717",
+        background: "#ffffff",
+        foreground: "#000000",
+        primary: "#fafafa",
+        accent: "#A2C65E",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Syne", "sans-serif"],
+        mono: ["Space Mono", "monospace"],
       },
     },
   },

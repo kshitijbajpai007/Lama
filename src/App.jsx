@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import FloatingCTA from './components/FloatingCTA';
+import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import About from './pages/About';
 import Work from './pages/Work';
 import Contact from './pages/Contact';
+import CategoryPage from './pages/CategoryPage';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -18,6 +19,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/work" element={<Work />} />
+        <Route path="/work/:category" element={<CategoryPage />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </AnimatePresence>
@@ -27,13 +29,13 @@ function AnimatedRoutes() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-background text-white font-sans overflow-x-hidden selection:bg-neutral-800 selection:text-white">
+      <div className="min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden selection:bg-neutral-800 selection:text-white">
         <Header />
-        <main>
+        <main className="flex-grow">
           <AnimatedRoutes />
         </main>
-        <Footer />
         <FloatingCTA />
+        <Footer />
       </div>
     </Router>
   );

@@ -1,174 +1,119 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowRight, Play } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const quadrants = [
+    { id: "music", label: "Music", path: "/work/music", color: "bg-white", description: "Vibe // Logic // Narrative" },
+    { id: "brand", label: "Brand", path: "/work/brand", color: "bg-white", description: "Identity // Strategy // Scale" },
+    { id: "food", label: "Food", path: "/work/food", color: "bg-white", description: "Taste // Texture // Frame" },
+    { id: "miscellaneous", label: "Miscellaneous", path: "/work/miscellaneous", color: "bg-white", description: "Raw // Untamed // Abstract" },
+  ];
+
   return (
-    <div className="relative w-full bg-black text-white overflow-x-hidden">
-      
+    <div className="relative w-full min-h-screen bg-white text-black overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex flex-col justify-center">
-        {/* Background Image scoped to Hero */}
-        <div className="absolute inset-0 z-0 bg-neutral-900 overflow-hidden">
-          <img 
-            src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=2000&q=80" 
-            alt="Cinematic background" 
-            className="w-full h-full object-cover opacity-40 mix-blend-overlay scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 md:px-12 pt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 60, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="max-w-4xl"
-          >
-            <motion.h1 
-              className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-6"
-            >
-              CAPTURING <br />
-              <span className="text-neutral-400">THE RAW</span> <br />
-              MOMENTS.
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-lg md:text-2xl text-neutral-300 max-w-xl mb-10 font-light"
-            >
-              Editorial photography and cinematic videography that tells your story without saying a word.
-            </motion.p>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-neutral-500"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
+      <section className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 pt-24 pb-12 border-b-[16px] border-accent relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-32 bg-accent -rotate-12 blur-3xl opacity-20 pointer-events-none" />
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full text-center relative z-10"
         >
-          <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          <h1 className="text-[22vw] md:text-[25vw] font-black tracking-tighter leading-none uppercase select-none flex flex-col">
+            <span className="relative inline-block">
+              LAMA
+              <motion.span 
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ delay: 1, duration: 1, ease: "circOut" }}
+                className="absolute bottom-[10%] left-0 h-[4vw] bg-accent z-[-1] opacity-60" 
+              />
+            </span>
+          </h1>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="flex flex-col items-center mt-4 text-center max-w-3xl relative z-10"
+        >
+          <p className="font-mono text-xs md:text-sm font-black uppercase tracking-[0.5em] text-neutral-400 mb-12 leading-relaxed">
+            Editorial photography and cinematic videography <br/> that tells your story without saying a word.
+          </p>
+          
+          <Link 
+            to="/work" 
+            className="flex items-center space-x-8 group border-4 border-black bg-black text-white px-12 py-6 hover:bg-accent hover:text-black transition-all shadow-[12px_12px_0px_0px_rgba(162,198,94,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] relative overflow-hidden"
           >
-            <ChevronDown size={16} />
-          </motion.div>
+            <span className="text-sm md:text-base tracking-[0.4em] uppercase font-black">Explore The Method</span>
+            <ArrowRight size={28} strokeWidth={4} className="group-hover:translate-x-3 transition-transform duration-500" />
+          </Link>
         </motion.div>
       </section>
 
-      {/* Philosophy / About Gateway */}
-      <section className="relative w-full py-32 bg-black">
-        <div className="container mx-auto px-6 md:px-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-3 font-mono text-xs tracking-[0.22em] uppercase text-neutral-400 mb-8">
-              <span className="w-6 h-[1px] bg-neutral-400"></span> Our Story
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 leading-tight">
-              THE SPACE WHERE <br />
-              <span className="text-neutral-500">ART MEETS</span> LENS.
-            </h2>
-            <p className="text-lg text-neutral-400 font-light mb-10 leading-relaxed">
-              Every shot should be designed from zero. No forced aesthetics. We focus on intention — capturing the genuine details that make each moment entirely yours. Follow our journey behind the camera.
-            </p>
-            <Link 
-              to="/about" 
-              className="inline-flex items-center space-x-3 text-white group"
-            >
-              <span className="text-sm tracking-widest uppercase font-medium">Read Our Philosophy</span>
-              <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
-                <ArrowRight size={18} />
-              </div>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Selected Works Gateway */}
-      <section className="relative w-full py-32 bg-neutral-900 border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6"
-          >
-            <div>
-              <div className="inline-flex items-center gap-3 font-mono text-xs tracking-[0.22em] uppercase text-neutral-400 mb-8">
-                <span className="w-6 h-[1px] bg-neutral-400"></span> Portfolio
-              </div>
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">RECENT WORK</h2>
-            </div>
-            <Link to="/work" className="text-sm tracking-[0.1em] uppercase text-neutral-400 hover:text-white transition-colors border-b border-white/20 pb-1">
-              View Full Gallery
-            </Link>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              { label: "Music & Live", img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80", delay: 0 },
-              { label: "Brands & Commercial", img: "https://images.unsplash.com/photo-1542314831-c6a4d14b8ba4?w=800&q=80", delay: 0.2 },
-              { label: "Food & Culinary", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80", delay: 0.4 }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: item.delay }}
-              >
-                <Link to="/work" className="group block relative overflow-hidden h-[400px]">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                  <img src={item.img} alt={item.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute bottom-6 left-6 z-20">
-                    <h3 className="text-xl font-bold uppercase tracking-wide group-hover:-translate-y-2 transition-transform duration-300">{item.label}</h3>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Next Steps / Contact Gateway */}
-      <section className="relative w-full py-32 bg-black border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12 text-center">
+      {/* 2x2 Quadrant Grid */}
+      <section className="grid grid-cols-1 md:grid-cols-2 w-full border-b-[16px] border-accent">
+        {quadrants.map((quad, i) => (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="max-w-2xl mx-auto flex flex-col items-center"
+            key={quad.id}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.15 }}
+            onClick={() => navigate(quad.path)}
+            className={`group relative h-[70vh] md:h-[100vh] border-black flex flex-col items-center justify-center cursor-pointer overflow-hidden
+              ${i % 2 === 0 ? 'md:border-r-[8px]' : ''} 
+              ${i < 2 ? 'md:border-b-[8px]' : ''}
+              ${i === 0 ? 'border-b-[8px] md:border-b-[8px]' : ''}
+              ${i === 1 ? 'border-b-[8px] md:border-b-[8px]' : ''}
+              ${i === 2 ? 'border-b-[8px] md:border-b-0' : ''}
+            `}
           >
-            <div className="inline-flex items-center gap-3 font-mono text-xs tracking-[0.22em] uppercase text-neutral-400 mb-8">
-              <span className="w-6 h-[1px] bg-neutral-400"></span> Next Step
+            {/* Hover Background Expansion */}
+            <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-800 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+            
+            <div className="relative z-10 flex flex-col items-center">
+              <span className="font-mono text-sm font-black text-neutral-400 group-hover:text-black mb-4 flex items-center gap-4 transition-colors">
+                <span className="w-8 h-1 bg-black group-hover:w-16 transition-all duration-500" /> SECTION // 0{i + 1}
+              </span>
+              <motion.h2 
+                className="text-6xl md:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
+              >
+                {quad.label}
+              </motion.h2>
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] mt-6 text-neutral-400 group-hover:text-black opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-10 group-hover:translate-y-0">
+                {quad.description}
+              </p>
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-10">
-              READY TO <br />
-              COLLABORATE?
-            </h2>
-            <Link 
-              to="/contact" 
-              className="inline-flex items-center space-x-3 text-black bg-white px-8 py-4 rounded-full group hover:bg-neutral-200 transition-colors duration-300"
-            >
-              <span className="text-sm tracking-widest uppercase font-bold">Book a Session</span>
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+
+            <div className="absolute bottom-16 right-16 z-10 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-x-12 group-hover:translate-x-0">
+              <div className="p-6 bg-black text-white border-4 border-black group-active:translate-x-2 group-active:translate-y-2 group-active:shadow-none shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
+                <span className="font-mono text-xs font-black uppercase tracking-[0.4em]">Initialize Flow ↗</span>
+              </div>
+            </div>
+
+            {/* LayoutId Support for Page Transition */}
+            <motion.div 
+              layoutId={`bg-${quad.id}`}
+              className="absolute inset-0 pointer-events-none"
+            />
           </motion.div>
-        </div>
+        ))}
       </section>
 
+      {/* Narrative Section with Accent */}
+      <section className="py-40 px-6 md:px-12 bg-white flex flex-col items-center text-center">
+        <h3 className="font-mono text-xs font-black uppercase tracking-[0.6em] text-accent mb-12">// The Philosophy</h3>
+        <p className="text-4xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter max-w-6xl">
+          Visual storytelling is not about what we see, but what we <span className="text-accent underline decoration-[12px] underline-offset-[16px]">feel</span> in the gaps between the frames.
+        </p>
+      </section>
     </div>
   );
 };

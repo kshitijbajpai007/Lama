@@ -1,185 +1,106 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Eye, Film, Image as ImageIcon, Music2, Briefcase, Coffee, Layers } from 'lucide-react';
-import MediaCard from '../components/MediaCard';
-
-const CATEGORIES = [
-  {
-    id: "music", className: "bg-gradient-to-br from-neutral-900 to-black hover:from-purple-900/10",
-    Icon: Music2, label: "Music", span: true,
-    desc: "Concert films, artist portraits & live event coverage that capture raw energy.",
-    count: "24 Projects",
-    items: [
-      { type: "video", h: 180, label: "Music Video", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
-      { type: "photo", h: 160, label: "Live Shot", src: "https://images.unsplash.com/photo-1540039155732-d68a2bf62c01?auto=format&fit=crop&w=600&q=80" },
-      { type: "photo", h: 200, label: "Artist Portrait", src: "https://images.unsplash.com/photo-1493225457224-eda0e6fdca03?auto=format&fit=crop&w=600&q=80" }, 
-      { type: "video", h: 180, label: "Concert Film", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" },
-      { type: "photo", h: 160, label: "Backstage", src: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" }, 
-      { type: "video", h: 200, label: "Lyric Video", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" },
-      { type: "photo", h: 160, label: "Press Kit", src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" }, 
-      { type: "photo", h: 180, label: "Tour Doc", src: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80" },
-    ]
-  },
-  {
-    id: "brands", className: "bg-gradient-to-br from-neutral-900 to-black hover:from-amber-600/10",
-    Icon: Briefcase, label: "Brands", span: false,
-    desc: "Commercial campaigns & branded storytelling for global names.",
-    count: "18 Projects",
-    items: [
-      { type: "video", h: 180, label: "TVC Spot", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" }, 
-      { type: "photo", h: 200, label: "Product Still", src: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" },
-      { type: "video", h: 160, label: "Social Film", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
-      { type: "photo", h: 180, label: "Lookbook", src: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" },
-      { type: "photo", h: 200, label: "Campaign", src: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" }, 
-      { type: "video", h: 160, label: "Launch Film", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" },
-    ]
-  },
-  {
-    id: "food", className: "bg-gradient-to-br from-neutral-900 to-black hover:from-orange-700/10",
-    Icon: Coffee, label: "Food", span: false,
-    desc: "Culinary photography & food films that make flavours visual.",
-    count: "15 Projects",
-    items: [
-      { type: "photo", h: 200, label: "Hero Shot", src: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=600&q=80" }, 
-      { type: "photo", h: 160, label: "Detail", src: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=600&q=80" },
-      { type: "video", h: 180, label: "Recipe Film", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
-      { type: "photo", h: 200, label: "Menu Shoot", src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" },
-      { type: "photo", h: 160, label: "Plating", src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" }, 
-      { type: "video", h: 180, label: "Chef Profile", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" },
-    ]
-  },
-  {
-    id: "misc", className: "bg-gradient-to-br from-neutral-900 to-black hover:from-teal-700/10",
-    Icon: Layers, label: "Miscellaneous", span: true,
-    desc: "Personal projects, documentary work & experimental visuals.",
-    count: "32 Projects",
-    items: [
-      { type: "video", h: 180, label: "Short Film", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
-      { type: "photo", h: 200, label: "Street", src: "https://images.unsplash.com/photo-1510488057273-0498b671a5cb?auto=format&fit=crop&w=600&q=80" },
-      { type: "photo", h: 160, label: "Travel Doc", src: "https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=600&q=80" }, 
-      { type: "video", h: 180, label: "Docu", src: "https://www.youtube.com/embed/yWvxUbgPnrk?autoplay=1&mute=1&controls=0&loop=1&playlist=yWvxUbgPnrk" },
-      { type: "photo", h: 200, label: "Landscape", src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80" }, 
-      { type: "photo", h: 160, label: "Experimental", src: "https://images.unsplash.com/photo-1506744626753-143bc3fe95bb?auto=format&fit=crop&w=600&q=80" },
-      { type: "video", h: 180, label: "Personal", src: "https://www.youtube.com/embed/aOwmt39L2IQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aOwmt39L2IQ" }, 
-      { type: "photo", h: 200, label: "Aerial", src: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=600&q=80" },
-    ]
-  },
-];
+import { useNavigate } from 'react-router-dom';
+import { ChevronDown, Filter } from 'lucide-react';
 
 const Work = () => {
-  const [active, setActive] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const toggle = (id) => setActive(prev => prev === id ? null : id);
+  const categories = [
+    { id: 'music', label: 'Music', description: 'Editorial // Music Videos // Live' },
+    { id: 'brand', label: 'Brand', description: 'Commercial // Product // Lifestyle' },
+    { id: 'food', label: 'Food', description: 'Culinary Arts // Hospitality' },
+    { id: 'miscellaneous', label: 'Miscellaneous', description: 'Experimental // Personal // Street' },
+  ];
 
   return (
-    <div className="min-h-screen bg-black pt-28 pb-20 px-6 md:px-12 container mx-auto">
+    <div className="min-h-screen bg-white text-black pt-32 pb-20 px-6 md:px-12 flex flex-col">
+      {/* Compact High-Contrast Selection Element */}
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+        className="w-full border-b-[8px] border-black pb-12 mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8"
       >
-        <div>
-          <div className="inline-flex items-center gap-3 font-mono text-xs tracking-[0.22em] uppercase text-neutral-400 mb-5">
-            <span className="w-6 h-[1px] bg-neutral-400"></span> Portfolio
-          </div>
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.95]">THE WORK</h1>
+        <div className="max-w-2xl">
+          <span className="font-mono text-xs font-black uppercase tracking-[0.4em] text-accent mb-4 block">
+            Portfolio Selector // Categorical Hub
+          </span>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
+            SELECTED <br /> <span className="text-accent underline decoration-8 underline-offset-[12px]">NARRATIVES.</span>
+          </h1>
         </div>
-        <p className="text-sm text-neutral-500 max-w-sm leading-relaxed">
-          Click any category to explore the full gallery. A mix of photo and video work spanning four disciplines.
-        </p>
+
+        <div className="relative w-full md:w-auto">
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-full md:w-80 border-4 border-black bg-black text-white p-6 flex justify-between items-center group hover:bg-accent hover:text-black transition-all duration-300 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1"
+          >
+            <div className="flex items-center gap-4">
+              <Filter size={20} className="text-accent group-hover:text-black transition-colors" />
+              <span className="text-sm font-black uppercase tracking-widest">Select Sector</span>
+            </div>
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ChevronDown size={24} strokeWidth={3} />
+            </motion.div>
+          </button>
+
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full right-0 mt-4 w-full md:w-96 bg-white border-4 border-black z-50 overflow-hidden shadow-[12px_12px_0px_0px_rgba(162,198,94,1)]"
+              >
+                {categories.map((cat, i) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      navigate(`/work/${cat.id}`);
+                      setIsOpen(false);
+                    }}
+                    className="w-full p-6 border-b-2 border-neutral-100 last:border-b-0 hover:bg-black hover:text-white text-left transition-all flex flex-col gap-1 group/item"
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="text-2xl font-black uppercase tracking-tighter group-hover/item:text-accent transition-colors">
+                        {cat.label}
+                      </span>
+                      <span className="font-mono text-[10px] text-neutral-400 group-hover/item:text-white">0{i + 1}</span>
+                    </div>
+                    <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-neutral-500 group-hover/item:text-neutral-400">
+                      {cat.description}
+                    </span>
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {CATEGORIES.map((cat, i) => {
-          const isActive = active === cat.id;
-          return (
-            <div key={`wrapper-${cat.id}`} className={cat.span ? "lg:col-span-2 col-span-1 contents" : "col-span-1 contents"}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                onClick={() => toggle(cat.id)}
-                className={`
-                  ${cat.span ? "lg:col-span-2" : "col-span-1"}
-                  ${cat.className}
-                  min-h-[220px] p-8 border hover:scale-[1.015] duration-300
-                  flex flex-col justify-between cursor-pointer relative overflow-hidden group
-                  ${isActive ? "border-neutral-500" : "border-white/10 hover:border-white/20"}
-                `}
-              >
-                <div>
-                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-300
-                    ${isActive ? "border-neutral-400 text-white" : "border-white/10 text-neutral-500 group-hover:border-neutral-700 group-hover:text-white"}`}
-                  >
-                    <cat.Icon size={16} />
-                  </div>
-                  <h2 className="text-3xl font-bold tracking-tighter uppercase mt-4 mb-1">{cat.label}</h2>
-                  <p className="text-xs text-neutral-400 leading-relaxed max-w-[260px]">{cat.desc}</p>
-                  <p className="font-mono text-[10px] tracking-widest text-neutral-500 mt-4 uppercase">
-                    {cat.count}
-                  </p>
-                </div>
-
-                <div className="absolute bottom-4 right-5 text-white/5 font-bold text-8xl pointer-events-none mb-0 leading-none">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                
-                <div className={`absolute bottom-6 right-6 transition-all duration-300 ${isActive ? "text-white rotate-180" : "text-neutral-600 group-hover:text-white group-hover:rotate-45"}`}>
-                  <ChevronDown size={20} />
-                </div>
-              </motion.div>
-
-              {/* Collapsible Gallery Panel */}
-              <AnimatePresence>
-                {isActive && (
-                  <motion.div
-                    key={`gp-${cat.id}`}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="col-span-1 lg:col-span-3 overflow-hidden origin-top"
-                  >
-                    <div className="bg-neutral-900 border border-white/10 p-6 md:p-8 mt-2 mb-4">
-                      
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="flex items-center gap-3">
-                          <cat.Icon size={18} className="text-neutral-400" />
-                          <span className="text-2xl font-bold tracking-tighter uppercase">{cat.label} Gallery</span>
-                        </div>
-                        <span className="font-mono text-[10px] tracking-[0.2em] text-neutral-500 uppercase">{cat.count}</span>
-                      </div>
-
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        {cat.items.map((item, j) => (
-                          <MediaCard key={j} item={item} />
-                        ))}
-                      </div>
-
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Clients & Collaborators Strip */}
-      <div className="mt-20">
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-10" />
-        <div className="inline-flex items-center gap-3 font-mono text-xs tracking-[0.22em] uppercase text-neutral-400 mb-6">
-          <span className="w-6 h-[1px] bg-neutral-400"></span> Clients & Collaborators
+      {/* Featured Insight Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center flex-grow pt-12">
+        <div className="border-l-[12px] border-accent pl-12 h-fit">
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">
+            A COLLECTION OF <br/> HIGH-FIDELITY <br/> STORYTELLING<span className="text-accent">.</span>
+          </h2>
+          <p className="font-mono text-xs md:text-sm font-bold uppercase tracking-[0.2em] leading-relaxed text-neutral-500 max-w-sm">
+            From editorial depth to commercial precision, we curate moments that define the visual standard of tomorrow. Use the sector selector to explore our archive.
+          </p>
         </div>
-        <div className="flex flex-wrap gap-3">
-          {["Sony Music","Universal","Red Bull","Nike","Zomato","Tanishq","Vogue India","HSBC","Nykaa","Kingfisher","Star Sports","GQ"].map(c => (
-            <div 
-              key={c} 
-              className="border border-white/10 px-5 py-2.5 text-xs font-medium text-neutral-500 hover:text-white hover:border-white/30 transition-colors duration-300 cursor-default tracking-widest"
-            >
-              {c}
-            </div>
-          ))}
+        
+        <div className="w-full aspect-video bg-neutral-100 border-4 border-black relative overflow-hidden group shadow-[16px_16px_0px_0px_rgba(0,0,0,0.1)]">
+          <img 
+            src="https://images.unsplash.com/photo-1542385151-efd9000785a0?auto=format&fit=crop&w=1200&q=80" 
+            alt="Work Showcase" 
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
+          />
+          <div className="absolute inset-0 bg-accent/20 group-hover:bg-transparent transition-colors duration-700" />
         </div>
       </div>
     </div>

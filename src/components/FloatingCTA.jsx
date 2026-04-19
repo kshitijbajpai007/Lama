@@ -17,37 +17,37 @@ const FloatingCTA = () => {
             className="flex flex-col space-y-3"
           >
             <a
-              href="mailto: princegmrllama@gmail.com"
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 text-white shadow-lg hover:bg-neutral-700 transition-colors"
+              href="mailto:hello@example.com"
+              className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-black bg-white text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
               aria-label="Email"
             >
-              <Mail size={20} />
+              <Mail size={20} strokeWidth={2.5} />
             </a>
             <a
-              href="https://wa.me/+917303781109"
+              href="https://wa.me/1234567890"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-500 transition-colors"
+              className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-black bg-green-500 text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
               aria-label="WhatsApp"
             >
-              <MessageCircle size={20} />
+              <MessageCircle size={20} strokeWidth={2.5} />
             </a>
           </motion.div>
         )}
       </AnimatePresence>
-
+      
       <button
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => setIsHovered(!isHovered)}
-        className="flex items-center justify-center w-14 h-14 rounded-full bg-white text-black shadow-2xl hover:scale-105 transition-transform duration-300"
+        className="flex items-center justify-center w-14 h-14 rounded-full border-2 border-black bg-black text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-white hover:text-black transition-colors"
         aria-label="Contact actions"
       >
         <motion.div
           animate={{ rotate: isHovered ? 45 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <Plus size={24} />
+          <Plus size={24} strokeWidth={2.5} />
         </motion.div>
       </button>
     </div>
