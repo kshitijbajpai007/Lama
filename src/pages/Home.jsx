@@ -24,15 +24,9 @@ const Home = () => {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="w-full text-center relative z-10"
         >
-          <h1 className="text-[22vw] md:text-[25vw] font-black tracking-tighter leading-none uppercase select-none flex flex-col">
+          <h1 className="text-[15vw] md:text-[18vw] font-black tracking-tighter leading-none uppercase select-none flex flex-col">
             <span className="relative inline-block">
-              LAMA
-              <motion.span 
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ delay: 1, duration: 1, ease: "circOut" }}
-                className="absolute bottom-[10%] left-0 h-[4vw] bg-accent z-[-1] opacity-60" 
-              />
+              LAMA<span className="text-accent">.</span>
             </span>
           </h1>
         </motion.div>
@@ -83,7 +77,7 @@ const Home = () => {
                 <span className="w-8 h-1 bg-black group-hover:w-16 transition-all duration-500" /> SECTION // 0{i + 1}
               </span>
               <motion.h2 
-                className="text-6xl md:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
+                className="text-4xl md:text-5xl font-black uppercase tracking-tighter transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
               >
                 {quad.label}
               </motion.h2>
